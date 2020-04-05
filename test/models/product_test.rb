@@ -52,6 +52,7 @@ class ProductTest < ActiveSupport::TestCase
     category1 = Category.create(name: 'category1')
     category2 = Category.create(name: 'category2')
     product = Product.create(name: 'product', stock: 15, price: 2.2 , user: user, categories: [category1, category2])
+    assert_not_equal(product.id, nil)
     assert_equal(category1 , product.categories.first)
     assert_equal(category2 , product.categories.second)
   end
