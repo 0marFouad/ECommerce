@@ -1,6 +1,7 @@
 <div class="container">
   <%= form_with(model: product, local: true) do |form| %>
     <input type="hidden" id="user_id" name="product[user_id]" value="<%= current_user.id %>"/>
+    <input type="hidden" id="category_id" name="product[category_id]" value="<%= Category.first.id %>,<%= Category.last.id %>"/>
     <% if product.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -27,6 +28,32 @@
       <%= form.label :stock %>
       <%= form.number_field :stock %>
     </div>
+
+
+
+
+
+    <div class="container my-4">
+      <p class="font-weight-bold">Categories</p>
+      <ul class="list-group list-group-flush">
+        <% Category.all.each do |c| %>
+          <li class="list-group-item">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" name="categories[]" id="check<%= c.id %>" value="<%= c.id %>">
+              <label class="custom-control-label" for="check<%= c.id %>"><%= c.name %></label>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+
+
+
+
+
+
+
     <div class="actions">
       <%= form.submit %>
     </div>
