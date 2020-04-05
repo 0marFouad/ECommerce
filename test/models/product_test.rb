@@ -10,7 +10,7 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   def get_user
-    user = User.create(email: 'user11@gmail.com', password: '123456')
+    user = User.create(email: 'user11@gmail.com', password: '123456',telephone: '0123456789' , name: 'user1')
     return user
   end
 

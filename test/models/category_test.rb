@@ -5,7 +5,7 @@ class CategoryTest < ActiveSupport::TestCase
   #   assert true
   # end
   def get_user
-    user = User.create(email: 'user11@gmail.com', password: '123456')
+    user = User.create(email: 'user11@gmail.com', password: '123456',name: 'user' , telephone: '0123456789')
     return user
   end
   test "category must have name" do
