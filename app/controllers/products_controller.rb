@@ -42,9 +42,9 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
+      @product.categories.delete_all
+      @product.categories << Category.where(id: params[:categories])
       if @product.update(product_params)
-        @product.categories.delete_all
-        @product.categories << Category.where(id: params[:categories])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
