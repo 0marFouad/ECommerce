@@ -16,6 +16,22 @@
     <%= @product.stock %>
   </p>
 
+  <p>
+    <strong>Rate:</strong>
+    <% if @product.rank_count == 0 %>
+    <%= 0 %>
+    <% else %>
+    <%= @product.rank_sum/@product.rank_count %>
+    <% end %>
+  </p>
+
+  <%= form_tag(rate_product_path, :method => "post", class: 'form-inline my-2 my-lg-0') do %>
+    <div class="input-group">
+      <%= select_tag 'ratings', options_for_select(['1','2','3','4','5'], '5') %>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ratings: </button>
+    </div>
+  <% end %>
+
   <%= link_to 'Show Old Reviews', reviews_path(@product) %> |
   <%= link_to 'New Review', new_review_path(@product) %> |
   <%= link_to 'Edit', edit_product_path(@product) %> |

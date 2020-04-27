@@ -1,9 +1,11 @@
-<h3>Search Result</h3>
+<div class="container">
+  <h3>Search Result</h3>
 
-<% @results.each do |result| %>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title"><%= link_to result.name , product_path(result) %><br></h5>
+  <% @results.each do |result| %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to result.name , product_path(result) %><br></h5>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

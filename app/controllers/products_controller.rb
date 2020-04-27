@@ -64,6 +64,23 @@ class ProductsController < ApplicationController
     end
   end
 
+  def rate
+    respond_to do |format|
+      set_product
+      rank_count_ = @product.rank_count
+      rank_sum_ = @product.rank_sum
+      rank_count_ = rank_count_ + 1
+      rank_sum_ = rank_sum_ + params[:ratings].to_i
+      if @product.update(rank_sum: rank_sum_, rank_count: rank_count_)
+        format.html { redirect_to @product, notice: 'Rank was successfully added.' }
+        format.json { render :show, status: :ok, location: @product }
+      else
+        format.html { render :edit }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
