@@ -3,11 +3,9 @@
 one:
   shipping_date: 2020-04-26
   shipping_address: MyString
-  order: 
   user: one
 
 two:
   shipping_date: 2020-04-26
   shipping_address: MyString
-  order: 
   user: two
