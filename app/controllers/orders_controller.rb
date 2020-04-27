@@ -24,7 +24,21 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    print params
     @order = Order.new(order_params)
+    @order.status = false
+    @order.products << Product.where(id: params[:products])
+
+    i = 0;
+    ptr = 0
+    while i <= params[:amount_of_products].length()
+      if @order.order_products[ptr] != nil  && params[:amount_of_products][i] != ""
+        @order.order_products[ptr].amount = params[:amount_of_products][i]
+        ptr = ptr + 1
+      end
+      i = i + 1
+    end
+
 
     respond_to do |format|
       if @order.save

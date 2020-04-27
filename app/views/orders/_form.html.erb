@@ -21,15 +21,24 @@
     <%= form.text_field :shipping_address %>
   </div>
 
-  <div class="field">
-    <%= form.label :order %>
-    <%= form.text_field :order %>
+
+  <div class="container my-4">
+    <p class="font-weight-bold">Ordered Products</p>
+    <ul class="list-group list-group-flush">
+      <% Product.all.each do |c| %>
+        <li class="list-group-item">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="products[]" id="check<%= c.id %>" value="<%= c.id %>">
+            <label class="custom-control-label" for="check<%= c.id %>"><%= c.name %></label>
+            <input  type="number" id="quantity<%= c.id %>>" name="amount_of_products[]" min="1">
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+
+  <%= form.hidden_field :user_id, :value => current_user.id %>
 
   <div class="actions">
     <%= form.submit %>

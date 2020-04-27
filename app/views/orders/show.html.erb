@@ -1,24 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Shipping date:</strong>
-  <%= @order.shipping_date %>
-</p>
+  <p>
+    <strong>Shipping date:</strong>
+    <%= @order.shipping_date %>
+  </p>
 
-<p>
-  <strong>Shipping address:</strong>
-  <%= @order.shipping_address %>
-</p>
+  <p>
+    <strong>Shipping address:</strong>
+    <%= @order.shipping_address %>
+  </p>
 
-<p>
-  <strong>Order:</strong>
-  <%= @order.order %>
-</p>
+  <% i = 0 %>
+  <% @order.products.all.each do |c| %>
+    <li class="list-group-item">
+      <div class="custom-control custom-checkbox">
+        <label class="custom-control-label"><%= c.name %></label>
+        <label><%= @order.order_products[i].amount %></label>
+        <% i = i + 1 %>
+      </div>
+    </li>
+  <% end %>
 
-<p>
-  <strong>User:</strong>
-  <%= @order.user %>
-</p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+  <p>
+    <strong>User:</strong>
+    <%= @order.user.name %>
+  </p>
+
+  <%= link_to 'Back', orders_path %>
+</div>
