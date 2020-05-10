@@ -13,6 +13,19 @@
           <!--            <li class="nav-link js-scroll-trigger">-->
           <!--              Logged in as <strong><%#= current_user.email %></strong>-->
           <!--            </li>-->
+          <% if cart_has_items %>
+            <li class="nav-item">
+                <%= link_to cart_path(@cart), class:"nav-link js-scroll-trigger" do %>
+                <span class="icon is-small">
+                  <i class="fa fa-shopping-cart"></i>
+                </span>
+                  <span>Cart
+                    <%= cart_count_over_one %>
+                  </span>
+                <% end %>
+            </li>
+          <% end %>
+
           <li class="nav-item">
             <%= link_to "Categories", categories_path, :class => 'nav-link js-scroll-trigger'  %>
           </li>

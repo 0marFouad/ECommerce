@@ -1,0 +1,10 @@
+<div class="columns align-items-center">
+  <%= cart_item.quantity %>
+  <%= truncate(cart_item.product.name, length: 140) %>
+  <strong class="f4"><%= number_to_currency(cart_item.total_price) %></strong>
+<div class="has-text-right">
+  <%= link_to "Remove Item", cart_item, method: :delete, data: { confirm: "Are you sure? "}, class:"button is-small mb4" %>
+</div>
+<hr />
+
+</div>
