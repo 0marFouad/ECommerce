@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="keep-shopping pv1 mt4 has-text-right">
+    <%= link_to "Keep Shopping", products_path, class: "button is-warning" %>
+  </div>
+  <hr />
+  <%= render(@cart.cart_items) %>
+  <div class="">
+    <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure?" }, class:'button is-danger' %>
+  </div>
+  <div>
+    <h4>
+      <span>Total:</span> <%= number_to_currency(@cart.total_price) %>
+    </h4>
+  </div>
+</div>
