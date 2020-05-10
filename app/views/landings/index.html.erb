@@ -51,7 +51,11 @@
     <div class="intro-text">
       <div class="intro-lead-in">Welcome To Our Online Market</div>
       <div class="intro-heading text-uppercase">Shut up & Take My Money</div>
-      <%= link_to 'Place An Order', new_order_path, :class => "btn btn-primary btn-xl text-uppercase js-scroll-trigger" %>
+      <% if user_signed_in? %>
+        <%= link_to 'Place An Order', new_order_path, :class => "btn btn-primary btn-xl text-uppercase js-scroll-trigger" %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, :class => 'btn btn-primary btn-xl text-uppercase js-scroll-trigger'  %>
+      <% end %>
     </div>
   </div>
 </header>
