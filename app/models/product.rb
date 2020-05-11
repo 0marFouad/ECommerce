@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :stock, presence: true
   validate :has_one_category_at_least
-
+  accepts_nested_attributes_for :categories
   def has_one_category_at_least
     if categories.empty?
       errors.add(:categories, "Product should at least has one category")
